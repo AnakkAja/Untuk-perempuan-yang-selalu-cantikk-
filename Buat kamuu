@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buat Uneee</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, pink, white, pink);
+      color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      transition: background-color 1s ease;
+      overflow: hidden;
+    }
+
+    .quote-container {
+      background-color: rgba(255, 255, 255, 0.15);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      max-width: 600px;
+      width: 90%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .quote {
+      font-size: 26px;
+      font-weight: 600;
+      margin-bottom: 25px;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+    }
+
+    .author {
+      font-size: 20px;
+      color: black;
+      font-style: italic;
+      transition: opacity 0.8s ease-in-out;
+    }
+
+    button {
+      background-color: pink;
+      border: none;
+      color: black;
+      padding: 15px 30px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 20px;
+      margin-top: 25px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background-color 0.5s, transform 0.3s ease-in-out;
+    }
+
+    button:hover {
+      background-color: pink;
+      transform: scale(1.1);
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="quote-container">
+    <div class="quote" id="quote">
+      "The only way to do great work is to love what you do."
+    </div>
+    <div class="author" id="author">- Steve Jobs</div>
+    <button onclick="generateQuote()">Lanjut</button>
+  </div>
+
+  <script>
+    const quotes = [
+      {
+        quote: "Terus tumbuh menjadi kaka yang hebat yaa cantikk.",
+        author: "ijann"
+      },
+      {
+        quote: "Kamu adalah wanita hebat,tetep bertahan yaa, semuanya akan baik - baik saja.",
+        author: "ijann"
+      },
+      {
+        quote: "Aku selalu sayang kamuuu",
+        author: "Bayii Mamii"
+      },
+      {
+        quote: "Bumi memiliki banyak orang hebat, kamu adalah salah satunya.",
+        author: "Anee"
+      },
+      {
+        quote: "I Love You More Than You Know",
+        author: "Ijanneee"
+      },
+      {
+        quote: "Semoga segala do'a dan harapanmu dapat terkabul yaa... aamiin",
+        author: "Pria Tamvan"
+      },
+      {
+        quote: "Beruntung banget ketemu kamu, hadirmu disini membuat hari - hariku lebih baik dari sebelumnya",
+        author: "Ijann"
+      },
+      {
+        quote: "Kalo dunia gabaik sama kamu, kamu harus baik sama diri kamu sendiri",
+        author: "Ijanneee"
+      },
+      {
+        quote: "Aku minta maaf, kalo belum jadi yang terbaik buat kamu, tapi bakal aku usahain ko",
+        author: "wz"
+      },
+      {
+        quote: "Kalo ada apa apa cerita yaa, i'm here for you, i'm ur home",
+        author: "Uwizzz"
+      },
+      {
+        quote: "Kamu itu kalau cantik yaa cantik aja, gausah pakai imut, lucu, manis, gemoy, gemes, arghhhhh",
+        author: "Ijann"
+      },
+      {
+        quote: "peluk dari jauhhhh sayang",
+        author: "Ijannn"
+      },
+      {
+        quote: "Kamu sedang dibentuk, yg namanya dibentuk pasti ga enak.tetep semangat yaa, you will be the best version of you",
+        author: "Ijannn"
+      },
+      {
+        quote: "LDR ga bisa romantis? helehh, buktinya ini bisa",
+        author: "Uwizzz"
+      },
+      {
+        quote: "Hari baik akan selalu ada, teruslah tumbuh dan lebih kuat lagi",
+        author: "Orang Tasik"
+      },
+      {
+        quote: "Pagi - pagi minum kopi, siangnya beli kelapa, duh senyumanmu, manis bagaikan gulaaa",
+        author: "Pacar Unee"
+      },
+      {
+        quote: "ga usah kebanyakan di publish, pokonya nawaitu background biru with you. Tapi semua orang harus tau bahwa kamu itu istimewa",
+        author: "Pria Cool"
+      },
+      {
+        quote: "Jadilah perempuan baik untuk siapapun yg kamu temui, setajam apapun pisau yg orang tancapkan padamu tetaplah rawat lukamu tanpa harus membenci orang yg melukaimu",
+        author: "Ijannn"
+      },
+      {
+        quote: "Setiap takdir yang membuatmu menangis, pasti berakhir manis. Ibarat obat yg kamu minum saat sakit, pasti pahitnya hanya sesaat saja bukan?",
+        author: "Ijannn"
+      },
+      {
+        quote: "i will always be proud off you, and i hope you will always be proud of yourself too",
+        author: "Ijanneee"
+      },
+      {
+        quote: "Semoga hal baik selalu beriringan denganmu, teruslah tumbuh, melangkah maju, dan meraih impian - impianmu",
+        author: "Aneee"
+      },
+      {
+        quote: "Dan dibalik takdir yang membuatmu menangis, sungguh ada takdir allah yg lain yg belum kita ketahui, tetaplah berpegang dengan QS. Al - Ghafur : 44",
+        author: "Aneee"
+      },
+      {
+        quote: "Lagi apa? lagi beruntung dapet cewe kaya kamuu",
+        author: "Wijdan Nuramzad"
+      },
+      {
+        quote: "Maaf yaa kalo sering salting, soalnya tuhan ga ngasih kisi - kisi kalo bakal ketemu orang selucu kamuu",
+        author: "Aneee"
+      },
+      {
+        quote: "Terimakasih atas kehadiranmu, dan kamu yang terbaik. Aku harap kamu selalu bahagia, dan aku akan selalu ada untukmuu",
+        author: "Ijanneee"
+      },
+      {
+        quote: "Ada lohh, perempuan yang sangat luar biasa, buktinya kamuu",
+        author: "Ijannn"
+      },
+      {
+        quote: "Are you ok? selalu berlindung di balik kata gapapa, selalu berusaha untuk terlihat senang, kamu hanya manusia, wajar saja kalau merasa lelah, sesekali teriaklah pada dunia aku sedang tidak baik - baik saja",
+        author: "Aneee"
+      },
+      {
+        quote: "Menjadi pasanganmu adalah part yang tidak pernah aku sangka, terimakasih sudah memilihku dari sekian banyak orang yg menginginkanmu. Tidak ada kata menyerah untuk mencinti cewe lucu sepertimu",
+        author: "Wz"
+      },
+      {
+        quote: "Dari mata turun ke hati, kedatangan anda sungguh berarti. Terimakasih",
+        author: "Uwizzz"
+      },
+      {
+        quote: "Masih ga nyangka kalo punya teteh teteh sukabumi secantik kamuuu",
+        author: "Orang Tasik"
+      },
+      {
+        quote: "Kalo ada perempuan yg mampu LDR itu bukan pacar lagi yaa, tapi calon istri",
+        author: "Pria Cool"
+      },
+      {
+        quote: "Hidup ini pahit, karena yang manis itu cewekku, cantikku, cintaku calon istrikuu",
+        author: "Aneee"
+      },
+      {
+        quote: "Beda kota pisah raga bukan masalahku, lihat wajahmu dilayar saja aku tetap berayukur",
+        author: "Ijannn"
+      },
+      {
+        quote: "Tukang tahu ngebanting kayu, gatau, i just can't stop thinking about you",
+        author: "Ijanneee"
+      },
+      {
+        quote: "Padahal obatnya cape istirahat yaa? ko aku malah pengen ketemu kamuu",
+        author: "Pujaan Hati"
+      },
+      {
+        quote: "Jaga kesehatan yaa bub, soalnya cuaca lagi ga nentu, pagi dingin, siang panas, sore hujan, malem kangennn",
+        author: "Pria Cakep"
+      },
+      {
+        quote: "Keren banget deh guee punya pacar cantik bangett, sampe sampe cowo cowo follow dia, padahal gue pemenangnya ahaha",
+        author: "Wz"
+      },
+      {
+        quote: "Jarak ga akan menghentikan rasa sayang aku ke kamuuu",
+        author: "Ijannn"
+      },
+      {
+        quote: "Kita gabisa ketemu setiap hari, dan aku ga pernah nyari kenyamanan di orang lain kalo ga lagi sama kamu, apalagi sampe ngurangin rasa sayang ke kamu, so happy with you",
+        author: "Ijanneee"
+      },
+      {
+        quote: "Aku bakalan selalu ada disini, jadi jangan sungkan berbagi cerita ke aku yaa",
+        author: "Aneee"
+      },
+      {
+        quote: "Apapun yang terjadi alwasy be love yourself okay, kamu sudah melakukan yang terbaik, be happy semangat terus yaa",
+        author: "Orang Tasik"
+      },
+      {
+        quote: "Love you baginda ratu tercantik, termanis, terlucuu, sehat - sehat terus yaa",
+        author: "Aneee"
+      }
+    ];
+
+    function generateQuote() {
+      const quoteElement = document.getElementById("quote");
+      const authorElement = document.getElementById("author");
+
+      // Fade out the current quote
+      quoteElement.style.opacity = 0;
+      authorElement.style.opacity = 0;
+
+      setTimeout(() => {
+        const randomIndex = Math.floor(Math.random() * quotes.length);
+        const quote = quotes[randomIndex];
+
+        // Update quote and author
+        quoteElement.textContent = `"${quote.quote}"`;
+        authorElement.textContent = `- ${quote.author}`;
+
+        // Fade in the new quote and author
+        quoteElement.style.opacity = 1;
+        authorElement.style.opacity = 1;
+// Fade in the new quote and author
+        quoteElement.style.opacity = 1;
+        authorElement.style.opacity = 1;
+      }, 800); // Match the timeout with the fade-out duration
+    }
+
+    // Initialize with a random quote
+    generateQuote();
+  </script>
+</body>
+</html>
